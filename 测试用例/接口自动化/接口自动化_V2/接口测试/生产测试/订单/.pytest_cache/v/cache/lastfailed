@@ -1,0 +1,4 @@
+{
+  "test_planOrder_create.py::TestPlanOrderCreate::test_planorder_create_2": true,
+  "test_planOrder_sendDown.py::TestPlanOrderSendDown::test_planorder_senddown_2": true
+}

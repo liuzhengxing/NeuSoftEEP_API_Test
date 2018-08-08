@@ -1,0 +1,5 @@
+[
+  "test_201_logistics_requirement_distributionWarehouse.py::TestMaterialeRequirementWareHouse::test_mrwh_autoWarehouseBy_1",
+  "test_201_logistics_requirement_distributionWarehouse.py::TestMaterialeRequirementWareHouse::test_mrwh_autoWarehouse_1",
+  "test_201_logistics_requirement_distributionWarehouse.py::TestMaterialeRequirementWareHouse::test_mrwh_manuallyWarehouse_1"
+]

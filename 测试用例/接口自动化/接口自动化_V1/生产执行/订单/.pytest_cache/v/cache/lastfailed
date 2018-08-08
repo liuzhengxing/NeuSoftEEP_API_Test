@@ -1,0 +1,4 @@
+{
+  "test_manufacture_order_merge.py::OrderMerge::test_order_merge_one": true,
+  "tmp_order.py::Test::test_order": true
+}

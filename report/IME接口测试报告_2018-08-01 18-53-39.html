@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>IME接口测试报告_2018-08-01 18-53-39</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.common.min.js"></script>
+    <!-- <script type="text/javascript" src="js/echarts.common.min.js"></script> -->
+
+    
+<style type="text/css" media="screen">
+    body        { font-family: Microsoft YaHei,Consolas,arial,sans-serif; font-size: 80%; }
+    table       { font-size: 100%; }
+    pre         { white-space: pre-wrap;word-wrap: break-word; }
+    /* -- heading ---------------------------------------------------------------------- */
+    h1 {
+        font-size: 32pt;
+        color: gray;
+    }
+    .heading {
+        margin-top: 0ex;
+        margin-bottom: 1ex;
+    }
+    .heading .attribute {
+        margin-top: 1ex;
+        margin-bottom: 0;
+    }
+    .heading .description {
+        margin-top: 2ex;
+        margin-bottom: 3ex;
+    }
+    /* -- css div popup ------------------------------------------------------------------------ */
+    a.popup_link {
+    }
+    a.popup_link:hover {
+        color: red;
+    }
+    .popup_window {
+        display: none;
+        position: relative;
+        left: 0px;
+        top: 0px;
+        /*border: solid #627173 1px; */
+        padding: 10px;
+        /*background-color: #E6E6D6; */
+        font-family: "Lucida Console", "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 8pt;
+        /* width: 500px;*/
+    }
+    }
+    /* -- report ------------------------------------------------------------------------ */
+    #show_detail_line {
+        margin-top: 3ex;
+        margin-bottom: 1ex;
+    }
+    #result_table {
+        width: 99%;
+    }
+    #header_row {
+        font-weight: bold;
+        color: #303641;
+        background-color: #ebebeb;
+    }
+    #total_row  { font-weight: bold; }
+    .passClass  { background-color: #bdedbc; }
+    .failClass  { background-color: #ffefa4; }
+    .errorClass { background-color: #ffc9c9; }
+    .passCase   { color: #6c6; }
+    .failCase   { color: #FF6600; font-weight: bold; }
+    .errorCase  { color: #c00; font-weight: bold; }
+    .hiddenRow  { display: none; }
+    .testcase   { margin-left: 2em; }
+    /* -- ending ---------------------------------------------------------------------- */
+    #ending {
+    }
+    #div_base {
+                position:absolute;
+                top:0%;
+                left:5%;
+                right:5%;
+                width: auto;
+                height: auto;
+                margin: -15px 0 0 0;
+    }
+</style>
+
+
+</head>
+<body>
+    <script language="javascript" type="text/javascript"><!--
+    output_list = Array();
+    /* level - 0:Summary; 1:Failed; 2:All */
+    function showCase(level) {
+        trs = document.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length; i++) {
+            tr = trs[i];
+            id = tr.id;
+            if (id.substr(0,2) == 'ft') {
+                if (level < 1) {
+                    tr.className = 'hiddenRow';
+                }
+                else {
+                    tr.className = '';
+                }
+            }
+            if (id.substr(0,2) == 'pt') {
+                if (level > 1) {
+                    tr.className = '';
+                }
+                else {
+                    tr.className = 'hiddenRow';
+                }
+            }
+        }
+    }
+    function showClassDetail(cid, count) {
+        var id_list = Array(count);
+        var toHide = 1;
+        for (var i = 0; i < count; i++) {
+            tid0 = 't' + cid.substr(1) + '.' + (i+1);
+            tid = 'f' + tid0;
+            tr = document.getElementById(tid);
+            if (!tr) {
+                tid = 'p' + tid0;
+                tr = document.getElementById(tid);
+            }
+            id_list[i] = tid;
+            if (tr.className) {
+                toHide = 0;
+            }
+        }
+        for (var i = 0; i < count; i++) {
+            tid = id_list[i];
+            if (toHide) {
+                document.getElementById('div_'+tid).style.display = 'none'
+                document.getElementById(tid).className = 'hiddenRow';
+            }
+            else {
+                document.getElementById(tid).className = '';
+            }
+        }
+    }
+    function showTestDetail(div_id){
+        var details_div = document.getElementById(div_id)
+        var displayState = details_div.style.display
+        // alert(displayState)
+        if (displayState != 'block' ) {
+            displayState = 'block'
+            details_div.style.display = 'block'
+        }
+        else {
+            details_div.style.display = 'none'
+        }
+    }
+    function html_escape(s) {
+        s = s.replace(/&/g,'&amp;');
+        s = s.replace(/</g,'&lt;');
+        s = s.replace(/>/g,'&gt;');
+        return s;
+    }
+    /* obsoleted by detail in <div>
+    function showOutput(id, name) {
+        var w = window.open("", //url
+                        name,
+                        "resizable,scrollbars,status,width=800,height=450");
+        d = w.document;
+        d.write("<pre>");
+        d.write(html_escape(output_list[id]));
+        d.write("\n");
+        d.write("<a href='javascript:window.close()'>close</a>\n");
+        d.write("</pre>\n");
+        d.close();
+    }
+    */
+    --></script>
+    <div id="div_base">
+        
+    <div class='page-header'>
+        <h1 align="center";>IME接口测试报告_2018-08-01 18-53-39</h1>
+    <p class='attribute'><strong>开始时间:</strong> 2018-08-01 18:53:39</p>
+<p class='attribute'><strong>运行时长:</strong> 0:01:21.211289</p>
+<p class='attribute'><strong>状态:</strong> 通过 28 失败 6 错误 7</p>
+
+    </div>
+    <div style="float: left;width:50%;"><p class='description'>用例执行情况：</p></div>
+    <div id="chart" style="width:50%;height:400px;float:left;"></div>
+
+        
+    <div class="btn-group btn-group-sm">
+        <button class="btn btn-default" onclick='javascript:showCase(0)'>总结</button>
+        <button class="btn btn-default" onclick='javascript:showCase(1)'>失败</button>
+        <button class="btn btn-default" onclick='javascript:showCase(2)'>全部</button>
+    </div>
+    <p></p>
+    <table id='result_table' class="table table-bordered">
+        <colgroup>
+            <col align='left' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+            <col align='right' />
+        </colgroup>
+        <tr id='header_row'>
+            <td>测试套件/测试用例</td>
+            <td>总数</td>
+            <td>通过</td>
+            <td>失败</td>
+            <td>错误</td>
+            <td>查看</td>
+        </tr>
+        
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.物流测试.物料需求.test_201_logistics_requirement_distributionWarehouse.TestMaterialeRequirementWareHouse: 物料需求分配仓库测试类</td>
+        <td>3</td>
+        <td>3</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c1',3)">详情</a></td>
+    </tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mrwh_autoWarehouseBy_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mrwh_autoWarehouse_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_mrwh_manuallyWarehouse_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.物流测试.物流单报工.test_201_logistics_logBillReport_create.TestLogBillReportCreate: 物流报工单创建测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c2',1)">详情</a></td>
+    </tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_logbillreport_create_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        错误</a>
+    <div id='div_ft2.1' class="popup_window">
+        <pre>ft2.1: Response： {'data': 'd1bcbe78a255423da84a1ad820d0b099', 'success': True}
+Response： {'success': True}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\物流测试\物流单报工\test_201_logistics_logBillReport_create.py", line 200, in test_logbillreport_create_1
+    self.assertEqual(1, len(lbr_gidList))
+TypeError: object of type 'NoneType' has no len()
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.物流测试.物流单报工.test_201_logistics_logBillReport_report.TestLogBillReport: 物流报工测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c3',1)">详情</a></td>
+    </tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_logbillreport_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        失败</a>
+    <div id='div_ft3.1' class="popup_window">
+        <pre>ft3.1: Response： {'data': '3e05c8ded1cb420baa972192ee7eea09', 'success': True}
+Response： {'success': True}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\物流测试\物流单报工\test_201_logistics_logBillReport_report.py", line 237, in test_logbillreport_1
+    self.assertIn('success', resp_lbr_report.keys())
+AssertionError: 'success' not found in dict_keys(['code', 'traces', 'cause', 'message'])
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.物流测试.物流报工记录.test_201_logReportRecord_query.TestLogReportRecord: 物流报工记录测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c4',1)">详情</a></td>
+    </tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_logbillreport_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.1')" >
+        通过</a>
+    <div id='div_pt4.1' class="popup_window">
+        <pre>pt4.1: Response： {'data': '4214e9e08ed94e2292e1f0c9170ea652', 'success': True}
+Response： {'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.工单.test_201_production_workOrder_create.TestWorkOrderCreate: 工单创建测试类</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c5',2)">详情</a></td>
+    </tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_workorder_create_1: 工单参照生成接口测试：参照数量大于计划数量</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        通过</a>
+    <div id='div_pt5.1' class="popup_window">
+        <pre>pt5.1: 订单编码： PO1533120842972
+Response： {'code': 105000, 'traces': [{'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 49, 'methodName': 'lambda$execute$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor$$Lambda$340/1813684320', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 39, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.CommandExecutorImpl', 'fileName': 'CommandExecutorImpl.java', 'lineNumber': 29, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.service.WorkOrderByPlanOrderCheckValuesService', 'fileName': 'WorkOrderByPlanOrderCheckValuesService.java', 'lineNumber': 35, 'methodName': 'createWorkOrderByPlanOrderCheckValues', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils', 'fileName': 'ReflectionUtils.java', 'lineNumber': 216, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 123, 'methodName': 'methodMissing', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12435', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 939, 'methodName': 'invokeMissingMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1262, 'methodName': 'invokePropertyOrMissing', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1215, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 69, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 174, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.visitor.NewCreateWorkOrderRefrencePlanOrderVisitor', 'fileName': 'script1533089997397875775460.groovy', 'lineNumber': 33, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1213, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 812, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': -1, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorInvoker', 'fileName': 'VisitorInvoker.java', 'lineNumber': 21, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorContextInterceptor', 'fileName': 'VisitorContextInterceptor.java', 'lineNumber': 48, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor', 'fileName': 'BaseActor.java', 'lineNumber': 54, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 35, 'methodName': 'valve', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12434', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.metaclass.ClosureMetaClass', 'fileName': 'ClosureMetaClass.java', 'lineNumber': 384, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 69, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 166, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.visitor.NewCreateWorkOrderRefrencePlanOrderVisitor$_visitor_closure4', 'fileName': 'script1533089997397875775460.groovy', 'lineNumber': 49, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.visitor.NewCreateWorkOrderRefrencePlanOrderVisitor$_visitor_closure4', 'fileName': 'script1533089997397875775460.groovy', 'lineNumber': -1, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.metaclass.ClosureMetaClass', 'fileName': 'ClosureMetaClass.java', 'lineNumber': 294, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 42, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 57, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 117, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 30, 'methodName': 'pipeline', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl$pipeline', 'lineNumber': -1, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.visitor.NewCreateWorkOrderRefrencePlanOrderVisitor', 'fileName': 'script1533089997397875775460.groovy', 'lineNumber': 48, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseVisitor', 'fileName': 'BaseVisitor.java', 'lineNumber': 51, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.NoSender', 'fileName': 'NoSender.java', 'lineNumber': 29, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 38, 'methodName': 'lambda$invoke$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor$$Lambda$357/178488388', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 37, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 179, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor', 'fileName': 'CglibAopProxy.java', 'lineNumber': 673, 'methodName': 'intercept', 'nativeMethod': False}, {'className': 'com.hj.ime.prodexec.line.controller.ImeWorkOrderController$$EnhancerBySpringCGLIB$$1ebd29e8', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'insertWorkOrderByPlanOrder', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 205, 'methodName': 'doInvoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 133, 'methodName': 'invokeForRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod', 'fileName': 'ServletInvocableHandlerMethod.java', 'lineNumber': 97, 'methodName': 'invokeAndHandle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 827, 'methodName': 'invokeHandlerMethod', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 738, 'methodName': 'handleInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter', 'fileName': 'AbstractHandlerMethodAdapter.java', 'lineNumber': 85, 'methodName': 'handle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 967, 'methodName': 'doDispatch', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 901, 'methodName': 'doService', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 970, 'methodName': 'processRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 872, 'methodName': 'doPost', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 661, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 846, 'methodName': 'service', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 742, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 231, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.tomcat.websocket.server.WsFilter', 'fileName': 'WsFilter.java', 'lineNumber': 52, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 61, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 108, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 137, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 66, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 449, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter$1', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 365, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 90, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 83, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.DelegatingSubject', 'fileName': 'DelegatingSubject.java', 'lineNumber': 383, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 362, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'com.hj.ime.core.web.QueryFilter', 'fileName': 'QueryFilter.java', 'lineNumber': 142, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.RequestContextFilter', 'fileName': 'RequestContextFilter.java', 'lineNumber': 99, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HttpPutFormContentFilter', 'fileName': 'HttpPutFormContentFilter.java', 'lineNumber': 108, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HiddenHttpMethodFilter', 'fileName': 'HiddenHttpMethodFilter.java', 'lineNumber': 81, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.CharacterEncodingFilter', 'fileName': 'CharacterEncodingFilter.java', 'lineNumber': 197, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 115, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 59, 'methodName': 'access$000', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter$1', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 90, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 108, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardWrapperValve', 'fileName': 'StandardWrapperValve.java', 'lineNumber': 198, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardContextValve', 'fileName': 'StandardContextValve.java', 'lineNumber': 96, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.authenticator.AuthenticatorBase', 'fileName': 'AuthenticatorBase.java', 'lineNumber': 504, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardHostValve', 'fileName': 'StandardHostValve.java', 'lineNumber': 140, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.ErrorReportValve', 'fileName': 'ErrorReportValve.java', 'lineNumber': 81, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.AbstractAccessLogValve', 'fileName': 'AbstractAccessLogValve.java', 'lineNumber': 650, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardEngineValve', 'fileName': 'StandardEngineValve.java', 'lineNumber': 87, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.connector.CoyoteAdapter', 'fileName': 'CoyoteAdapter.java', 'lineNumber': 342, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.http11.Http11Processor', 'fileName': 'Http11Processor.java', 'lineNumber': 803, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProcessorLight', 'fileName': 'AbstractProcessorLight.java', 'lineNumber': 66, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProtocol$ConnectionHandler', 'fileName': 'AbstractProtocol.java', 'lineNumber': 790, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.NioEndpoint$SocketProcessor', 'fileName': 'NioEndpoint.java', 'lineNumber': 1459, 'methodName': 'doRun', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.SocketProcessorBase', 'fileName': 'SocketProcessorBase.java', 'lineNumber': 49, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 1142, 'methodName': 'runWorker', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor$Worker', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 617, 'methodName': 'run', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.threads.TaskThread$WrappingRunnable', 'fileName': 'TaskThread.java', 'lineNumber': 61, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.lang.Thread', 'fileName': 'Thread.java', 'lineNumber': 745, 'methodName': 'run', 'nativeMethod': False}], 'cause': '参照生成数量不能大于订单未下发数量', 'message': '0105000|运行框架: 命令执行异常:参照生成数量不能大于订单未下发数量'}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_workorder_create_2: 工单创建接口测试：自动编码</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.2')" >
+        通过</a>
+    <div id='div_pt5.2' class="popup_window">
+        <pre>pt5.2: Response： {'data': 'cd24d96b741d467692ad6b861ae59366', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.工单.test_201_production_workOrder_sendDown.TestWorkOrderSendDown: 工单下发测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c6',1)">详情</a></td>
+    </tr>
+
+<tr id='ft6.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_workorder_senddown_1: 工单下发接口测试：下发生成派工单</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.1')" >
+        失败</a>
+    <div id='div_ft6.1' class="popup_window">
+        <pre>ft6.1: Response： {'data': 'f6e3decc251d43f1870e573d0b310bd3', 'success': True}
+trackList： [{'active': True, 'code': 'TO201808010041', 'createBy': 'anonymous', 'createTime': '2018-08-01 18:54:04', 'del': False, 'factoryLineGid': '35e8b99228344abb8ffb543178c0d17b', 'gid': '6e7d180bffa542688e9e8b471fc7b282', 'imeTrackOrderOperationList': [{'active': True, 'businessMode': '[]', 'code': 'Q02', 'createBy': 'anonymous', 'createTime': '2018-08-01 18:54:04', 'curDefectiveQty': 0, 'curQualifiedQty': 0, 'curRepairQty': 0, 'curReportQty': 0, 'curTrackQty': 10, 'curWasteQty': 0, 'defOperationGid': '5b043a8363784b0ca47a7206c1309aec', 'del': False, 'factoryLineGid': '35e8b99228344abb8ffb543178c0d17b', 'factoryStationGid': 'facd98a254e948ebabe1ebdf232e87a9', 'gid': '15b171d9675a41909ef4192d375ade30', 'imeTrackOrderStepsList': [], 'name': 'API工序02', 'operationStepFinishFlag': True, 'processTest': True, 'processingMode': 'unlimited', 'rhythm': 100, 'rhythmCount': 0, 'rhythmType': 'minute', 'rowNumber': '0010', 'smBusiGroupGid': '632cd1f557f0437cbe48a66a0021bd93', 'status': '10', 'totalDefectiveQty': 0, 'totalQualifiedQty': 0, 'totalRepairQty': 0, 'totalReportQty': 0, 'totalTrackQty': 10, 'totalWasteQty': 0, 'trackOrderGid': '6e7d180bffa542688e9e8b471fc7b282', 'trackQty': 10, 'type': 'turning', 'updateBy': 'anonymous', 'updateTime': '2018-08-01 18:54:04', 'workCenterGid': '4756b6ee4de24d0b82281af141e64e97', 'workOrderGid': 'f6e3decc251d43f1870e573d0b310bd3', 'workOrderOperationGid': '9f912292665b47c28296300b1bf9a348', 'workUnitGid': '78ae9666dc974110ad74303bbd5b368e', 'worksheetGenarationMode': 'workPublishProduce'}, {'active': True, 'businessMode': '["start"]', 'code': 'Q01', 'createBy': 'anonymous', 'createTime': '2018-08-01 18:54:04', 'curDefectiveQty': 0, 'curQualifiedQty': 0, 'curRepairQty': 0, 'curReportQty': 0, 'curTrackQty': 10, 'curWasteQty': 0, 'defOperationGid': '24cf05e2699441dd87fb968060a52d9e', 'del': False, 'factoryLineGid': '35e8b99228344abb8ffb543178c0d17b', 'factoryStationGid': 'facd98a254e948ebabe1ebdf232e87a9', 'gid': 'd2aca17175bb493c88becb40dcfad00f', 'imeTrackOrderStepsList': [], 'name': 'API工序01', 'operationStepFinishFlag': True, 'processTest': True, 'processingMode': 'unlimited', 'rhythm': 100, 'rhythmCount': 6000, 'rhythmType': 'minute', 'rowNumber': '0020', 'smBusiGroupGid': '632cd1f557f0437cbe48a66a0021bd93', 'status': '10', 'totalDefectiveQty': 0, 'totalQualifiedQty': 0, 'totalRepairQty': 0, 'totalReportQty': 0, 'totalTrackQty': 10, 'totalWasteQty': 0, 'trackOrderGid': '6e7d180bffa542688e9e8b471fc7b282', 'trackQty': 10, 'type': 'turning', 'updateBy': 'anonymous', 'updateTime': '2018-08-01 18:54:04', 'workCenterGid': '4756b6ee4de24d0b82281af141e64e97', 'workOrderGid': 'f6e3decc251d43f1870e573d0b310bd3', 'workOrderOperationGid': 'f946c8b72bdc4dbc82957432b70a7f64', 'workUnitGid': '78ae9666dc974110ad74303bbd5b368e'}], 'materialGid': '1e88a41a12a94f508321dea03cf4cbba', 'materialVersion': '1', 'orderStatus': '20', 'orderType': '62DC90DAFA845CB2E055000000000001', 'planBeginTime': '2018-05-01 00:00:00', 'planEndTime': '2018-05-31 00:00:00', 'resourceOrderGid': 'f6e3decc251d43f1870e573d0b310bd3', 'resourceOrderType': '10020', 'smBusiGroupGid': '632cd1f557f0437cbe48a66a0021bd93', 'updateBy': 'anonymous', 'updateTime': '2018-08-01 18:54:04', 'workCenterGid': '4756b6ee4de24d0b82281af141e64e97', 'workOrderQty': 10, 'workUnitGid': '78ae9666dc974110ad74303bbd5b368e'}]
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\生产测试\工单\test_201_production_workOrder_sendDown.py", line 121, in test_workorder_senddown_1
+    self.assertEqual(2, len(trackList))
+AssertionError: 2 != 1
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.报工.test_201_production_reportOrder_report.TestReportOrderReport: 报工测试类</td>
+        <td>2</td>
+        <td>0</td>
+        <td>2</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c7',2)">详情</a></td>
+    </tr>
+
+<tr id='ft7.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_reportorder_report_1: 报工接口测试：全部良品报工</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.1')" >
+        失败</a>
+    <div id='div_ft7.1' class="popup_window">
+        <pre>ft7.1: Response： {'data': '8ae834c75b5649f3bd3762249e817332', 'success': True}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\生产测试\报工\test_201_production_reportOrder_report.py", line 187, in test_reportorder_report_1
+    self.assertEqual(3, len(resp.pop('data')))
+AssertionError: 3 != 2
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='ft7.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_reportorder_report_2: 报工接口测试：全部不良品报工</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.2')" >
+        失败</a>
+    <div id='div_ft7.2' class="popup_window">
+        <pre>ft7.2: Response： {'data': '836c9ba5181c4bc197e6ac75e5ddcaac', 'success': True}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\生产测试\报工\test_201_production_reportOrder_report.py", line 254, in test_reportorder_report_2
+    self.assertEqual(3, len(resp.pop('data')))
+AssertionError: 3 != 2
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.派工单.test_201_production_trackOrder_create.TestTrackOrderReport: 派工单测试类</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c8',2)">详情</a></td>
+    </tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trackorder_create_1: 派工单创建接口测试：参照工单生成</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        通过</a>
+    <div id='div_pt8.1' class="popup_window">
+        <pre>pt8.1: Response： {'data': '9f6acc8182554df19c39e2de575f5d0d', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt8.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trackorder_create_2: 派工单创建接口测试：参照数量大于计划数量</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.2')" >
+        通过</a>
+    <div id='div_pt8.2' class="popup_window">
+        <pre>pt8.2: Response： {'data': '6b91d607be484bdd98fbd9334ac575e2', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.订单.test_201_production_planOrder_create.TestPlanOrderCreate: 订单创建测试类</td>
+        <td>2</td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c9',2)">详情</a></td>
+    </tr>
+
+<tr id='pt9.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_planorder_create_1: 订单创建接口测试：输入正确的必填项生成订单</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.1')" >
+        通过</a>
+    <div id='div_pt9.1' class="popup_window">
+        <pre>pt9.1: 订单编码： PO1533120863234
+Response： {'data': '890aac22c67f42ffa4692ffe5b08f187', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='pt9.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_planorder_create_2: 订单创建接口测试：自动编码</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt9.2')" >
+        通过</a>
+    <div id='div_pt9.2' class="popup_window">
+        <pre>pt9.2: Response： {'data': '0c0e9dc163d24e3ebd325a271a5018f6', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.生产测试.订单.test_201_production_planOrder_sendDown.TestPlanOrderSendDown: 订单下发测试类</td>
+        <td>2</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c10',2)">详情</a></td>
+    </tr>
+
+<tr id='pt10.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_planorder_senddown_1: 订单下发接口测试：下发生产工单数量验证</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt10.1')" >
+        通过</a>
+    <div id='div_pt10.1' class="popup_window">
+        <pre>pt10.1: 订单编码： PO1533120866529
+Response： {'data': ['e5dde04c534a4690a48e2795e35f75cf'], 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+<tr id='ft10.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_planorder_senddown_2: 订单下发接口测试：下发生产工单回写生产订单已生成数量验证</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft10.2')" >
+        错误</a>
+    <div id='div_ft10.2' class="popup_window">
+        <pre>ft10.2: 订单编码： PO1533120869357
+Response： {'data': ['24132da608c24b869cc7115feefd566f'], 'success': True}
+Response： {'success': True}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\生产测试\订单\test_201_production_planOrder_sendDown.py", line 96, in test_planorder_senddown_2
+    self.assertEqual(10, resp.pop('data').pop('publishedQty'))
+KeyError: 'data'
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_add.TestInspectTaskAdd: 点检任务创建测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c11',1)">详情</a></td>
+    </tr>
+
+<tr id='pt11.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_add_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_addAndTrack.TestInspectTaskAddAndTrack: 点检任务创建并派工测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c12',1)">详情</a></td>
+    </tr>
+
+<tr id='pt12.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_addAndTrack_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_addAndTrackFromInspectStrategy.TestInspectTaskAddAndTrackFrom: 点检任务参照创建并派工测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c13',1)">详情</a></td>
+    </tr>
+
+<tr id='pt13.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_addAndTrackFrom_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_addFromInspectStrategy.TestInspectTaskAddFrom: 点检任务参照创建测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c14',1)">详情</a></td>
+    </tr>
+
+<tr id='pt14.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_addFrom_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_delete.TestInspectTaskDelete: 点检任务批量删除测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c15',1)">详情</a></td>
+    </tr>
+
+<tr id='pt15.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_delete_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_findById.TestInspectTaskFindById: 点检任务详情查询测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c16',1)">详情</a></td>
+    </tr>
+
+<tr id='pt16.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_findById_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_modify.TestInspectTaskModify: 点检任务更新测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c17',1)">详情</a></td>
+    </tr>
+
+<tr id='pt17.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask__1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_query.TestInspectTaskQuery: 点检任务列表查询测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c18',1)">详情</a></td>
+    </tr>
+
+<tr id='pt18.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_query_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_report.TestInspectTaskReport: 点检任务报工测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c19',1)">详情</a></td>
+    </tr>
+
+<tr id='pt19.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_report_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检任务.test_201_inspecttask_track.TestInspectTaskTrack: 点检任务批量派工测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c20',1)">详情</a></td>
+    </tr>
+
+<tr id='pt20.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspecttask_track_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='failClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检策略.test_201_inspectstrate_addBatch.TestInspectStrategyAdd: 点检策略创建测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c21',1)">详情</a></td>
+    </tr>
+
+<tr id='ft21.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_inspectstrategy_addBatch_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft21.1')" >
+        失败</a>
+    <div id='div_ft21.1' class="popup_window">
+        <pre>ft21.1: Respones： {'code': 105000, 'traces': [{'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 49, 'methodName': 'lambda$execute$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor$$Lambda$340/1813684320', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 39, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.CommandExecutorImpl', 'fileName': 'CommandExecutorImpl.java', 'lineNumber': 29, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.service.impl.ImeInspectStrategyDomainServiceImpl', 'fileName': 'ImeInspectStrategyDomainServiceImpl.java', 'lineNumber': 68, 'methodName': 'lambda$createBatchInpsectStrategys$23', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.service.impl.ImeInspectStrategyDomainServiceImpl$$Lambda$502/990660237', 'lineNumber': -1, 'methodName': 'accept', 'nativeMethod': False}, {'className': 'java.util.ArrayList', 'fileName': 'ArrayList.java', 'lineNumber': 1249, 'methodName': 'forEach', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.service.impl.ImeInspectStrategyDomainServiceImpl', 'fileName': 'ImeInspectStrategyDomainServiceImpl.java', 'lineNumber': 66, 'methodName': 'createBatchInpsectStrategys', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController', 'fileName': 'ImeInspectStrategyController.java', 'lineNumber': 76, 'methodName': 'addBatch', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController$$FastClassBySpringCGLIB$$662be70', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.cglib.proxy.MethodProxy', 'fileName': 'MethodProxy.java', 'lineNumber': 204, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation', 'fileName': 'CglibAopProxy.java', 'lineNumber': 738, 'methodName': 'invokeJoinpoint', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 157, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 42, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 179, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor', 'fileName': 'CglibAopProxy.java', 'lineNumber': 673, 'methodName': 'intercept', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController$$EnhancerBySpringCGLIB$$80c9747a', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'addBatch', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor11547', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 205, 'methodName': 'doInvoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 133, 'methodName': 'invokeForRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod', 'fileName': 'ServletInvocableHandlerMethod.java', 'lineNumber': 97, 'methodName': 'invokeAndHandle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 827, 'methodName': 'invokeHandlerMethod', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 738, 'methodName': 'handleInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter', 'fileName': 'AbstractHandlerMethodAdapter.java', 'lineNumber': 85, 'methodName': 'handle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 967, 'methodName': 'doDispatch', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 901, 'methodName': 'doService', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 970, 'methodName': 'processRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 872, 'methodName': 'doPost', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 661, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 846, 'methodName': 'service', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 742, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 231, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.tomcat.websocket.server.WsFilter', 'fileName': 'WsFilter.java', 'lineNumber': 52, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 61, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 108, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 137, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 66, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 449, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter$1', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 365, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 90, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 83, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.DelegatingSubject', 'fileName': 'DelegatingSubject.java', 'lineNumber': 383, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 362, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'com.hj.ime.core.web.QueryFilter', 'fileName': 'QueryFilter.java', 'lineNumber': 142, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.RequestContextFilter', 'fileName': 'RequestContextFilter.java', 'lineNumber': 99, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HttpPutFormContentFilter', 'fileName': 'HttpPutFormContentFilter.java', 'lineNumber': 108, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HiddenHttpMethodFilter', 'fileName': 'HiddenHttpMethodFilter.java', 'lineNumber': 81, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.CharacterEncodingFilter', 'fileName': 'CharacterEncodingFilter.java', 'lineNumber': 197, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 115, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 59, 'methodName': 'access$000', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter$1', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 90, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 108, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardWrapperValve', 'fileName': 'StandardWrapperValve.java', 'lineNumber': 198, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardContextValve', 'fileName': 'StandardContextValve.java', 'lineNumber': 96, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.authenticator.AuthenticatorBase', 'fileName': 'AuthenticatorBase.java', 'lineNumber': 504, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardHostValve', 'fileName': 'StandardHostValve.java', 'lineNumber': 140, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.ErrorReportValve', 'fileName': 'ErrorReportValve.java', 'lineNumber': 81, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.AbstractAccessLogValve', 'fileName': 'AbstractAccessLogValve.java', 'lineNumber': 650, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardEngineValve', 'fileName': 'StandardEngineValve.java', 'lineNumber': 87, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.connector.CoyoteAdapter', 'fileName': 'CoyoteAdapter.java', 'lineNumber': 342, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.http11.Http11Processor', 'fileName': 'Http11Processor.java', 'lineNumber': 803, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProcessorLight', 'fileName': 'AbstractProcessorLight.java', 'lineNumber': 66, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProtocol$ConnectionHandler', 'fileName': 'AbstractProtocol.java', 'lineNumber': 790, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.NioEndpoint$SocketProcessor', 'fileName': 'NioEndpoint.java', 'lineNumber': 1459, 'methodName': 'doRun', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.SocketProcessorBase', 'fileName': 'SocketProcessorBase.java', 'lineNumber': 49, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 1142, 'methodName': 'runWorker', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor$Worker', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 617, 'methodName': 'run', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.threads.TaskThread$WrappingRunnable', 'fileName': 'TaskThread.java', 'lineNumber': 61, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.lang.Thread', 'fileName': 'Thread.java', 'lineNumber': 745, 'methodName': 'run', 'nativeMethod': False}], 'cause': '[设备检查项目GID,[设备GID],存在重复数据,请重新输入!', 'message': '0105000|运行框架: 命令执行异常:[设备检查项目GID,[设备GID],存在重复数据,请重新输入!'}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\设备测试\点检策略\test_201_inspectstrate_addBatch.py", line 36, in test_inspectstrategy_addBatch_1
+    self.assertIn('data', resp_isy_add.keys())
+AssertionError: 'data' not found in dict_keys(['code', 'traces', 'cause', 'message'])
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检策略.test_201_inspectstrate_delete.TestInspectStrategyDelete: 点检策略删除测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c22',1)">详情</a></td>
+    </tr>
+
+<tr id='ft22.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_inspectstrategy_delete_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft22.1')" >
+        错误</a>
+    <div id='div_ft22.1' class="popup_window">
+        <pre>ft22.1: Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\设备测试\点检策略\test_201_inspectstrate_delete.py", line 40, in test_inspectstrategy_delete_1
+    self.assertIn('success', resp_isy_delete.keys())
+AttributeError: 'str' object has no attribute 'keys'
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检策略.test_201_inspectstrate_findbyid.TestInspectStrategyFindById: 点检策略详情查询测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c23',1)">详情</a></td>
+    </tr>
+
+<tr id='ft23.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_inspectstrategy_find_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft23.1')" >
+        错误</a>
+    <div id='div_ft23.1' class="popup_window">
+        <pre>ft23.1: Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\设备测试\点检策略\test_201_inspectstrate_findbyid.py", line 36, in test_inspectstrategy_find_1
+    isy_gid = resp_isy_add.get('data')[0]
+TypeError: 'NoneType' object is not subscriptable
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='failClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检策略.test_201_inspectstrate_modify.TestInspectStrategyModify: 点检策略更新测试类</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c24',1)">详情</a></td>
+    </tr>
+
+<tr id='ft24.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_inspectstrategy_modify_1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft24.1')" >
+        失败</a>
+    <div id='div_ft24.1' class="popup_window">
+        <pre>ft24.1: Respones： {'code': 105000, 'traces': [{'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 49, 'methodName': 'lambda$execute$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor$$Lambda$340/1813684320', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 39, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.CommandExecutorImpl', 'fileName': 'CommandExecutorImpl.java', 'lineNumber': 29, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController', 'fileName': 'ImeInspectStrategyController.java', 'lineNumber': 43, 'methodName': 'modify', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController$$FastClassBySpringCGLIB$$662be70', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.cglib.proxy.MethodProxy', 'fileName': 'MethodProxy.java', 'lineNumber': 204, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation', 'fileName': 'CglibAopProxy.java', 'lineNumber': 738, 'methodName': 'invokeJoinpoint', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 157, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 42, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 179, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor', 'fileName': 'CglibAopProxy.java', 'lineNumber': 673, 'methodName': 'intercept', 'nativeMethod': False}, {'className': 'com.hj.ime.equip.inspect.controller.ImeInspectStrategyController$$EnhancerBySpringCGLIB$$80c9747a', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'modify', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 205, 'methodName': 'doInvoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 133, 'methodName': 'invokeForRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod', 'fileName': 'ServletInvocableHandlerMethod.java', 'lineNumber': 97, 'methodName': 'invokeAndHandle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 827, 'methodName': 'invokeHandlerMethod', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 738, 'methodName': 'handleInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter', 'fileName': 'AbstractHandlerMethodAdapter.java', 'lineNumber': 85, 'methodName': 'handle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 967, 'methodName': 'doDispatch', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 901, 'methodName': 'doService', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 970, 'methodName': 'processRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 872, 'methodName': 'doPost', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 661, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 846, 'methodName': 'service', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 742, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 231, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.tomcat.websocket.server.WsFilter', 'fileName': 'WsFilter.java', 'lineNumber': 52, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 61, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 108, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 137, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 66, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 449, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter$1', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 365, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 90, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 83, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.DelegatingSubject', 'fileName': 'DelegatingSubject.java', 'lineNumber': 383, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 362, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'com.hj.ime.core.web.QueryFilter', 'fileName': 'QueryFilter.java', 'lineNumber': 142, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.RequestContextFilter', 'fileName': 'RequestContextFilter.java', 'lineNumber': 99, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HttpPutFormContentFilter', 'fileName': 'HttpPutFormContentFilter.java', 'lineNumber': 108, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HiddenHttpMethodFilter', 'fileName': 'HiddenHttpMethodFilter.java', 'lineNumber': 81, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.CharacterEncodingFilter', 'fileName': 'CharacterEncodingFilter.java', 'lineNumber': 197, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 115, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 59, 'methodName': 'access$000', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter$1', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 90, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 108, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardWrapperValve', 'fileName': 'StandardWrapperValve.java', 'lineNumber': 198, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardContextValve', 'fileName': 'StandardContextValve.java', 'lineNumber': 96, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.authenticator.AuthenticatorBase', 'fileName': 'AuthenticatorBase.java', 'lineNumber': 504, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardHostValve', 'fileName': 'StandardHostValve.java', 'lineNumber': 140, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.ErrorReportValve', 'fileName': 'ErrorReportValve.java', 'lineNumber': 81, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.AbstractAccessLogValve', 'fileName': 'AbstractAccessLogValve.java', 'lineNumber': 650, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardEngineValve', 'fileName': 'StandardEngineValve.java', 'lineNumber': 87, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.connector.CoyoteAdapter', 'fileName': 'CoyoteAdapter.java', 'lineNumber': 342, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.http11.Http11Processor', 'fileName': 'Http11Processor.java', 'lineNumber': 803, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProcessorLight', 'fileName': 'AbstractProcessorLight.java', 'lineNumber': 66, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProtocol$ConnectionHandler', 'fileName': 'AbstractProtocol.java', 'lineNumber': 790, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.NioEndpoint$SocketProcessor', 'fileName': 'NioEndpoint.java', 'lineNumber': 1459, 'methodName': 'doRun', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.SocketProcessorBase', 'fileName': 'SocketProcessorBase.java', 'lineNumber': 49, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 1142, 'methodName': 'runWorker', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor$Worker', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 617, 'methodName': 'run', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.threads.TaskThread$WrappingRunnable', 'fileName': 'TaskThread.java', 'lineNumber': 61, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.lang.Thread', 'fileName': 'Thread.java', 'lineNumber': 745, 'methodName': 'run', 'nativeMethod': False}], 'cause': '[设备检查项目GID,[设备GID],存在重复数据,请重新输入!', 'message': '0105000|运行框架: 命令执行异常:[设备检查项目GID,[设备GID],存在重复数据,请重新输入!'}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\设备测试\点检策略\test_201_inspectstrate_modify.py", line 47, in test_inspectstrategy_modify_1
+    self.assertIn('success', resp_isy_modify.keys())
+AssertionError: 'success' not found in dict_keys(['code', 'traces', 'cause', 'message'])
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.设备测试.点检策略.test_201_inspectstrate_query.TestInspectStrategyQuery: 点检策略查询测试类</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c25',1)">详情</a></td>
+    </tr>
+
+<tr id='pt25.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_inspectstrategy_query_1</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.报检单.test_201_qualityRecord_add.QualityRecordAdd: 报检单</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c26',1)">详情</a></td>
+    </tr>
+
+<tr id='pt26.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityRecordAdd: 对直接创建的质检工单报检</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt26.1')" >
+        通过</a>
+    <div id='div_pt26.1' class="popup_window">
+        <pre>pt26.1: {'data': 'f59ff015bbe34a68a7c1ff17aeda9c3c', 'success': True}
+{'data': 'f59ff015bbe34a68a7c1ff17aeda9c3c', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.报检单.test_201_qualityRecord_track_add.QualityRecord_TrackAdd: 派检单</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c27',1)">详情</a></td>
+    </tr>
+
+<tr id='pt27.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trackQualityOrder: 报检</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt27.1')" >
+        通过</a>
+    <div id='div_pt27.1' class="popup_window">
+        <pre>pt27.1: resp2
+{'data': 'fc420f6972ac4d58a6d14edd0c51091f', 'success': True}
+resp3
+{'data': '587027c0602840d89559ffbcbcf41055', 'success': True}
+resp4
+{'data': '587027c0602840d89559ffbcbcf41055', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.派检单.test_201_trackQualityOrder_add.TrackQualityOrderAdd: 派检单</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c28',1)">详情</a></td>
+    </tr>
+
+<tr id='pt28.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_trackQualityOrder: 对直接创建的质检工单派检</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt28.1')" >
+        通过</a>
+    <div id='div_pt28.1' class="popup_window">
+        <pre>pt28.1: {'data': 'a699f0fd8f0c49bb98ca45b0c7920c4d', 'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.质检工单.test_201_qualityWorkOrder_delete.qualityWorkOrderDel: 质检工单删除</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c29',1)">详情</a></td>
+    </tr>
+
+<tr id='pt29.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityWorkOrderRef</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt29.1')" >
+        通过</a>
+    <div id='div_pt29.1' class="popup_window">
+        <pre>pt29.1: {'success': True}
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.质检工单.test_201_qualityWorkOrder_ref.qualityWorkOrderRef: 质检工单参照生成</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c30',1)">详情</a></td>
+    </tr>
+
+<tr id='pt30.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_qualityWorkOrderRef</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt30.1')" >
+        通过</a>
+    <div id='div_pt30.1' class="popup_window">
+        <pre>pt30.1: ['8b0d980e48cb4fcc9fcc11aa7af02511']
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.采集清单.test_201_qualityCollectionList.QualityCollectListByRef: 采集清单</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c31',1)">详情</a></td>
+    </tr>
+
+<tr id='ft31.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_trackQualityOrder: 根据质检工单进行清单采集</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft31.1')" >
+        错误</a>
+    <div id='div_ft31.1' class="popup_window">
+        <pre>ft31.1: {'code': 105000, 'traces': [{'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 49, 'methodName': 'lambda$execute$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor$$Lambda$340/1813684320', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 39, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.CommandExecutorImpl', 'fileName': 'CommandExecutorImpl.java', 'lineNumber': 29, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.service.CollectionListServiceImpl', 'fileName': 'CollectionListServiceImpl.java', 'lineNumber': 27, 'methodName': 'collectionList', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils', 'fileName': 'ReflectionUtils.java', 'lineNumber': 216, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 123, 'methodName': 'methodMissing', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12435', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 939, 'methodName': 'invokeMissingMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1262, 'methodName': 'invokePropertyOrMissing', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1215, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 69, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 174, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 45, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1213, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 812, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': -1, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorInvoker', 'fileName': 'VisitorInvoker.java', 'lineNumber': 21, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorContextInterceptor', 'fileName': 'VisitorContextInterceptor.java', 'lineNumber': 48, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor', 'fileName': 'BaseActor.java', 'lineNumber': 54, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 35, 'methodName': 'valve', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12434', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1213, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 810, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': -1, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.GroovyObject$invokeMethod$3', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'groovy.lang.GroovyObject$invokeMethod$3', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.Dsl', 'fileName': 'Dsl.groovy', 'lineNumber': 14, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 48, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 125, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor$_visitor_closure1', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 30, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor$_visitor_closure1', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': -1, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.metaclass.ClosureMetaClass', 'fileName': 'ClosureMetaClass.java', 'lineNumber': 294, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 42, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 57, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 117, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 30, 'methodName': 'pipeline', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl$pipeline', 'lineNumber': -1, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 28, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseVisitor', 'fileName': 'BaseVisitor.java', 'lineNumber': 51, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.NoSender', 'fileName': 'NoSender.java', 'lineNumber': 29, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 38, 'methodName': 'lambda$invoke$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor$$Lambda$357/178488388', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 37, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 179, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor', 'fileName': 'CglibAopProxy.java', 'lineNumber': 673, 'methodName': 'intercept', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.controller.ImeQualityCollectListController$$EnhancerBySpringCGLIB$$714ac9e3', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'collectionListByRefType', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12050', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 205, 'methodName': 'doInvoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 133, 'methodName': 'invokeForRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod', 'fileName': 'ServletInvocableHandlerMethod.java', 'lineNumber': 97, 'methodName': 'invokeAndHandle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 827, 'methodName': 'invokeHandlerMethod', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 738, 'methodName': 'handleInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter', 'fileName': 'AbstractHandlerMethodAdapter.java', 'lineNumber': 85, 'methodName': 'handle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 967, 'methodName': 'doDispatch', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 901, 'methodName': 'doService', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 970, 'methodName': 'processRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 872, 'methodName': 'doPost', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 661, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 846, 'methodName': 'service', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 742, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 231, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.tomcat.websocket.server.WsFilter', 'fileName': 'WsFilter.java', 'lineNumber': 52, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 61, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 108, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 137, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 66, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 449, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter$1', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 365, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 90, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 83, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.DelegatingSubject', 'fileName': 'DelegatingSubject.java', 'lineNumber': 383, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 362, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'com.hj.ime.core.web.QueryFilter', 'fileName': 'QueryFilter.java', 'lineNumber': 142, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.RequestContextFilter', 'fileName': 'RequestContextFilter.java', 'lineNumber': 99, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HttpPutFormContentFilter', 'fileName': 'HttpPutFormContentFilter.java', 'lineNumber': 108, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HiddenHttpMethodFilter', 'fileName': 'HiddenHttpMethodFilter.java', 'lineNumber': 81, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.CharacterEncodingFilter', 'fileName': 'CharacterEncodingFilter.java', 'lineNumber': 197, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 115, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 59, 'methodName': 'access$000', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter$1', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 90, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 108, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardWrapperValve', 'fileName': 'StandardWrapperValve.java', 'lineNumber': 198, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardContextValve', 'fileName': 'StandardContextValve.java', 'lineNumber': 96, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.authenticator.AuthenticatorBase', 'fileName': 'AuthenticatorBase.java', 'lineNumber': 504, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardHostValve', 'fileName': 'StandardHostValve.java', 'lineNumber': 140, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.ErrorReportValve', 'fileName': 'ErrorReportValve.java', 'lineNumber': 81, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.AbstractAccessLogValve', 'fileName': 'AbstractAccessLogValve.java', 'lineNumber': 650, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardEngineValve', 'fileName': 'StandardEngineValve.java', 'lineNumber': 87, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.connector.CoyoteAdapter', 'fileName': 'CoyoteAdapter.java', 'lineNumber': 342, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.http11.Http11Processor', 'fileName': 'Http11Processor.java', 'lineNumber': 803, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProcessorLight', 'fileName': 'AbstractProcessorLight.java', 'lineNumber': 66, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProtocol$ConnectionHandler', 'fileName': 'AbstractProtocol.java', 'lineNumber': 790, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.NioEndpoint$SocketProcessor', 'fileName': 'NioEndpoint.java', 'lineNumber': 1459, 'methodName': 'doRun', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.SocketProcessorBase', 'fileName': 'SocketProcessorBase.java', 'lineNumber': 49, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 1142, 'methodName': 'runWorker', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor$Worker', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 617, 'methodName': 'run', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.threads.TaskThread$WrappingRunnable', 'fileName': 'TaskThread.java', 'lineNumber': 61, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.lang.Thread', 'fileName': 'Thread.java', 'lineNumber': 745, 'methodName': 'run', 'nativeMethod': False}], 'cause': '\n### Error updating database.  Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n### The error may involve com.hj.ime.quality.collect.mapper.ImeQualityCollectListMapper.insert-Inline\n### The error occurred while setting parameters\n### SQL: INSERT INTO IME_QUALITY_COLLECT_LIST (gid, index_type, is_ok, qc_ref_type, qc_ref_gid, qc_ref_code, index_create_source_gid, importance, index_name, index_code, md_route_operation_name, md_route_operation_code, create_by, update_by, create_time, update_time, sm_busi_group_gid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n### Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n; bad SQL grammar []; nested exception is java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n', 'message': '0105000|运行框架: 命令执行异常:\n### Error updating database.  Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n### The error may involve com.hj.ime.quality.collect.mapper.ImeQualityCollectListMapper.insert-Inline\n### The error occurred while setting parameters\n### SQL: INSERT INTO IME_QUALITY_COLLECT_LIST (gid, index_type, is_ok, qc_ref_type, qc_ref_gid, qc_ref_code, index_create_source_gid, importance, index_name, index_code, md_route_operation_name, md_route_operation_code, create_by, update_by, create_time, update_time, sm_busi_group_gid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n### Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n; bad SQL grammar []; nested exception is java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n'}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\质量测试\采集清单\test_201_qualityCollectionList.py", line 53, in test_trackQualityOrder
+    self.assertEqual(True,resp2.pop("success"))
+KeyError: 'success'
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.采集清单.test_201_qualityCollectionList_query.QualityCollectionListQuery</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c32',1)">详情</a></td>
+    </tr>
+
+<tr id='pt32.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_queryQualityCollectionlist</div></td>
+    <td colspan='5' align='center'>通过</td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.采集清单.test_201_qualityCollectionList_report.QualityCollectListByRef: 采集清单</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c33',1)">详情</a></td>
+    </tr>
+
+<tr id='ft33.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_trackQualityOrder: 根据报检单进行清单采集</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft33.1')" >
+        错误</a>
+    <div id='div_ft33.1' class="popup_window">
+        <pre>ft33.1: [{'importance': 'important', 'indexCode': '001', 'indexCreateSourceGid': '60eca75873644e91b09b082d963bf76e', 'indexName': '轴承', 'indexType': 'qualitative', 'mdRouteOperationCode': '001', 'mdRouteOperationName': '冲压工序01', 'isOk': 'b40fde533e474fdb97f0e51d4439fa2a', 'qcRefCode': '', 'qcRefGid': '69372819f414480fae32e06daa6f60b9', 'qcRefType': '20012'}]
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\质量测试\采集清单\test_201_qualityCollectionList_report.py", line 65, in test_trackQualityOrder
+    self.assertEqual(True,resp3.pop("success"))
+KeyError: 'success'
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+    <tr class='errorClass'>
+        <td>接口自动化.接口自动化_V2.接口测试.质量测试.采集清单.test_201_qualityCollectionList_track.QualityCollectListByRef: 采集清单</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c34',1)">详情</a></td>
+    </tr>
+
+<tr id='ft34.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_trackQualityOrder: 根据派检单进行清单采集</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft34.1')" >
+        错误</a>
+    <div id='div_ft34.1' class="popup_window">
+        <pre>ft34.1: {'code': 105000, 'traces': [{'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 49, 'methodName': 'lambda$execute$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor$$Lambda$340/1813684320', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.interceptor.CommandContextInterceptor', 'fileName': 'CommandContextInterceptor.java', 'lineNumber': 39, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.cmd.CommandExecutorImpl', 'fileName': 'CommandExecutorImpl.java', 'lineNumber': 29, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.service.CollectionListServiceImpl', 'fileName': 'CollectionListServiceImpl.java', 'lineNumber': 27, 'methodName': 'collectionList', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils', 'fileName': 'ReflectionUtils.java', 'lineNumber': 216, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.springframework.util.ReflectionUtils$invokeMethod$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 123, 'methodName': 'methodMissing', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12435', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 939, 'methodName': 'invokeMissingMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1262, 'methodName': 'invokePropertyOrMissing', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1215, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 69, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 174, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 45, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1213, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 812, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': -1, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorInvoker', 'fileName': 'VisitorInvoker.java', 'lineNumber': 21, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.impl.VisitorContextInterceptor', 'fileName': 'VisitorContextInterceptor.java', 'lineNumber': 48, 'methodName': 'exec', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor', 'fileName': 'BaseActor.java', 'lineNumber': 54, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseActor$tell$0', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 35, 'methodName': 'valve', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12434', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1213, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 810, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': -1, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.GroovyObject$invokeMethod$3', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'groovy.lang.GroovyObject$invokeMethod$3', 'lineNumber': -1, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.Dsl', 'fileName': 'Dsl.groovy', 'lineNumber': 14, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 48, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 125, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor$_visitor_closure1', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 30, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor$_visitor_closure1', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': -1, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': -2, 'methodName': 'invoke0', 'nativeMethod': True}, {'className': 'sun.reflect.NativeMethodAccessorImpl', 'fileName': 'NativeMethodAccessorImpl.java', 'lineNumber': 62, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.reflection.CachedMethod', 'fileName': 'CachedMethod.java', 'lineNumber': 93, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'groovy.lang.MetaMethod', 'fileName': 'MetaMethod.java', 'lineNumber': 325, 'methodName': 'doMethodInvoke', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.metaclass.ClosureMetaClass', 'fileName': 'ClosureMetaClass.java', 'lineNumber': 294, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'groovy.lang.MetaClassImpl', 'fileName': 'MetaClassImpl.java', 'lineNumber': 1022, 'methodName': 'invokeMethod', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 42, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.CallSiteArray', 'fileName': 'CallSiteArray.java', 'lineNumber': 48, 'methodName': 'defaultCall', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.PogoMetaClassSite', 'fileName': 'PogoMetaClassSite.java', 'lineNumber': 57, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.codehaus.groovy.runtime.callsite.AbstractCallSite', 'fileName': 'AbstractCallSite.java', 'lineNumber': 117, 'methodName': 'call', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl', 'fileName': 'VisitorDsl.groovy', 'lineNumber': 30, 'methodName': 'pipeline', 'nativeMethod': False}, {'className': 'com.hj.framework.core.VisitorDsl$pipeline', 'lineNumber': -1, 'methodName': 'callCurrent', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.visitor.CollectionListVisitor', 'fileName': 'CollectionListVisitor.groovy', 'lineNumber': 28, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.BaseVisitor', 'fileName': 'BaseVisitor.java', 'lineNumber': 51, 'methodName': 'visitor', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.NoSender', 'fileName': 'NoSender.java', 'lineNumber': 29, 'methodName': 'tell', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 38, 'methodName': 'lambda$invoke$0', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor$$Lambda$357/178488388', 'lineNumber': -1, 'methodName': 'doInTransaction', 'nativeMethod': False}, {'className': 'org.springframework.transaction.support.TransactionTemplate', 'fileName': 'TransactionTemplate.java', 'lineNumber': 133, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'com.hj.framework.core.visitor.interceptor.VisitorInterceptor', 'fileName': 'VisitorInterceptor.java', 'lineNumber': 37, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.ReflectiveMethodInvocation', 'fileName': 'ReflectiveMethodInvocation.java', 'lineNumber': 179, 'methodName': 'proceed', 'nativeMethod': False}, {'className': 'org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor', 'fileName': 'CglibAopProxy.java', 'lineNumber': 673, 'methodName': 'intercept', 'nativeMethod': False}, {'className': 'com.hj.ime.quality.collect.controller.ImeQualityCollectListController$$EnhancerBySpringCGLIB$$714ac9e3', 'fileName': '&lt;generated&gt;', 'lineNumber': -1, 'methodName': 'collectionListByRefType', 'nativeMethod': False}, {'className': 'sun.reflect.GeneratedMethodAccessor12050', 'lineNumber': -1, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'sun.reflect.DelegatingMethodAccessorImpl', 'fileName': 'DelegatingMethodAccessorImpl.java', 'lineNumber': 43, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'java.lang.reflect.Method', 'fileName': 'Method.java', 'lineNumber': 497, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 205, 'methodName': 'doInvoke', 'nativeMethod': False}, {'className': 'org.springframework.web.method.support.InvocableHandlerMethod', 'fileName': 'InvocableHandlerMethod.java', 'lineNumber': 133, 'methodName': 'invokeForRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod', 'fileName': 'ServletInvocableHandlerMethod.java', 'lineNumber': 97, 'methodName': 'invokeAndHandle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 827, 'methodName': 'invokeHandlerMethod', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter', 'fileName': 'RequestMappingHandlerAdapter.java', 'lineNumber': 738, 'methodName': 'handleInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter', 'fileName': 'AbstractHandlerMethodAdapter.java', 'lineNumber': 85, 'methodName': 'handle', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 967, 'methodName': 'doDispatch', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.DispatcherServlet', 'fileName': 'DispatcherServlet.java', 'lineNumber': 901, 'methodName': 'doService', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 970, 'methodName': 'processRequest', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 872, 'methodName': 'doPost', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 661, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.springframework.web.servlet.FrameworkServlet', 'fileName': 'FrameworkServlet.java', 'lineNumber': 846, 'methodName': 'service', 'nativeMethod': False}, {'className': 'javax.servlet.http.HttpServlet', 'fileName': 'HttpServlet.java', 'lineNumber': 742, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 231, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.tomcat.websocket.server.WsFilter', 'fileName': 'WsFilter.java', 'lineNumber': 52, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 61, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 108, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AdviceFilter', 'fileName': 'AdviceFilter.java', 'lineNumber': 137, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.ProxiedFilterChain', 'fileName': 'ProxiedFilterChain.java', 'lineNumber': 66, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 449, 'methodName': 'executeChain', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter$1', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 365, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 90, 'methodName': 'doCall', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.SubjectCallable', 'fileName': 'SubjectCallable.java', 'lineNumber': 83, 'methodName': 'call', 'nativeMethod': False}, {'className': 'org.apache.shiro.subject.support.DelegatingSubject', 'fileName': 'DelegatingSubject.java', 'lineNumber': 383, 'methodName': 'execute', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.AbstractShiroFilter', 'fileName': 'AbstractShiroFilter.java', 'lineNumber': 362, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.apache.shiro.web.servlet.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 125, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'com.hj.ime.core.web.QueryFilter', 'fileName': 'QueryFilter.java', 'lineNumber': 142, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.RequestContextFilter', 'fileName': 'RequestContextFilter.java', 'lineNumber': 99, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HttpPutFormContentFilter', 'fileName': 'HttpPutFormContentFilter.java', 'lineNumber': 108, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.HiddenHttpMethodFilter', 'fileName': 'HiddenHttpMethodFilter.java', 'lineNumber': 81, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.CharacterEncodingFilter', 'fileName': 'CharacterEncodingFilter.java', 'lineNumber': 197, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 115, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 59, 'methodName': 'access$000', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter$1', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 90, 'methodName': 'doFilterInternal', 'nativeMethod': False}, {'className': 'org.springframework.web.filter.OncePerRequestFilter', 'fileName': 'OncePerRequestFilter.java', 'lineNumber': 107, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.springframework.boot.web.support.ErrorPageFilter', 'fileName': 'ErrorPageFilter.java', 'lineNumber': 108, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 193, 'methodName': 'internalDoFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.ApplicationFilterChain', 'fileName': 'ApplicationFilterChain.java', 'lineNumber': 166, 'methodName': 'doFilter', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardWrapperValve', 'fileName': 'StandardWrapperValve.java', 'lineNumber': 198, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardContextValve', 'fileName': 'StandardContextValve.java', 'lineNumber': 96, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.authenticator.AuthenticatorBase', 'fileName': 'AuthenticatorBase.java', 'lineNumber': 504, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardHostValve', 'fileName': 'StandardHostValve.java', 'lineNumber': 140, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.ErrorReportValve', 'fileName': 'ErrorReportValve.java', 'lineNumber': 81, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.valves.AbstractAccessLogValve', 'fileName': 'AbstractAccessLogValve.java', 'lineNumber': 650, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.core.StandardEngineValve', 'fileName': 'StandardEngineValve.java', 'lineNumber': 87, 'methodName': 'invoke', 'nativeMethod': False}, {'className': 'org.apache.catalina.connector.CoyoteAdapter', 'fileName': 'CoyoteAdapter.java', 'lineNumber': 342, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.http11.Http11Processor', 'fileName': 'Http11Processor.java', 'lineNumber': 803, 'methodName': 'service', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProcessorLight', 'fileName': 'AbstractProcessorLight.java', 'lineNumber': 66, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.coyote.AbstractProtocol$ConnectionHandler', 'fileName': 'AbstractProtocol.java', 'lineNumber': 790, 'methodName': 'process', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.NioEndpoint$SocketProcessor', 'fileName': 'NioEndpoint.java', 'lineNumber': 1459, 'methodName': 'doRun', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.net.SocketProcessorBase', 'fileName': 'SocketProcessorBase.java', 'lineNumber': 49, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 1142, 'methodName': 'runWorker', 'nativeMethod': False}, {'className': 'java.util.concurrent.ThreadPoolExecutor$Worker', 'fileName': 'ThreadPoolExecutor.java', 'lineNumber': 617, 'methodName': 'run', 'nativeMethod': False}, {'className': 'org.apache.tomcat.util.threads.TaskThread$WrappingRunnable', 'fileName': 'TaskThread.java', 'lineNumber': 61, 'methodName': 'run', 'nativeMethod': False}, {'className': 'java.lang.Thread', 'fileName': 'Thread.java', 'lineNumber': 745, 'methodName': 'run', 'nativeMethod': False}], 'cause': '\n### Error updating database.  Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n### The error may involve com.hj.ime.quality.collect.mapper.ImeQualityCollectListMapper.insert-Inline\n### The error occurred while setting parameters\n### SQL: INSERT INTO IME_QUALITY_COLLECT_LIST (gid, index_type, is_ok, qc_ref_type, qc_ref_gid, qc_ref_code, index_create_source_gid, importance, index_name, index_code, md_route_operation_name, md_route_operation_code, create_by, update_by, create_time, update_time, sm_busi_group_gid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n### Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n; bad SQL grammar []; nested exception is java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n', 'message': '0105000|运行框架: 命令执行异常:\n### Error updating database.  Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n### The error may involve com.hj.ime.quality.collect.mapper.ImeQualityCollectListMapper.insert-Inline\n### The error occurred while setting parameters\n### SQL: INSERT INTO IME_QUALITY_COLLECT_LIST (gid, index_type, is_ok, qc_ref_type, qc_ref_gid, qc_ref_code, index_create_source_gid, importance, index_name, index_code, md_route_operation_name, md_route_operation_code, create_by, update_by, create_time, update_time, sm_busi_group_gid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n### Cause: java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n\n; bad SQL grammar []; nested exception is java.sql.SQLException: ORA-00904: "MD_ROUTE_OPERATION_CODE": invalid identifier\n'}
+Traceback (most recent call last):
+  File "C:\Users\齐振鋆\PycharmProjects\NeuSoftEEP_API_Test\测试用例\接口自动化\接口自动化_V2\接口测试\质量测试\采集清单\test_201_qualityCollectionList_track.py", line 77, in test_trackQualityOrder
+    self.assertEqual(True,resp3.pop("success"))
+KeyError: 'success'
+</pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+</tr>
+
+        <tr id='total_row'>
+            <td>总计</td>
+            <td>41</td>
+            <td>28</td>
+            <td>6</td>
+            <td>7</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div id='ending'>&nbsp;</div>
+        
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+        // 指定图表的配置项和数据
+        var option = {
+            title : {
+                text: '测试执行情况',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            color: ['#3AA45C', '#A22F33', '#E1AF2F'],
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['通过','失败','错误']
+            },
+            series : [
+                {
+                    name: '测试执行情况',
+                    type: 'pie',
+                    radius : '60%',
+                    center: ['50%', '60%'],
+                    data:[
+                        {value:28, name:'通过'},
+                        {value:6, name:'失败'},
+                        {value:7, name:'错误'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    </div>
+</body>
+</html>

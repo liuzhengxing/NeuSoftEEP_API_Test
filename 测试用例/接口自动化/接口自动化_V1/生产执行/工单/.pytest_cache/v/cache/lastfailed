@@ -1,0 +1,6 @@
+{
+  "test_manufacture_workorder_create.py::WorkOrderCreate": true,
+  "test_manufacture_workorder_release.py::WorkOrderRelease::test_workorder_release_true": true,
+  "test_manufacture_workorder_release.py::WorkOrderSaveSort::test_workorder_savesort_err1": true,
+  "test_manufacture_workorder_savesort.py::WorkOrderSaveSort::test_workorder_savesort_true": true
+}
